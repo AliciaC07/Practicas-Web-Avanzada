@@ -45,7 +45,7 @@ public class StudentController {
 
     }
 
-    @GetMapping("/student-idcollege/{id}")
+    @GetMapping("/student-mat/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Student findByIdCollege(@PathVariable Integer id){
         return studentService.findByIdCollege(id)
