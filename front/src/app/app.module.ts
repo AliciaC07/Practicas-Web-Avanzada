@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainMenuComponent } from './Components/main-menu/main-menu.component';
 import { ModifyOrCreateStudentComponent } from './Components/modify-or-create-student/modify-or-create-student.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

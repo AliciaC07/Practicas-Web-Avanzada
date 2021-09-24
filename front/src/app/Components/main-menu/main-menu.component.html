@@ -25,8 +25,8 @@
                                 <td>{{student.career}}</td>
                                 <td>
                                     <div class="row">
-                                        <div class="col-sm-3"><button [routerLink]="['/modify', student.id]" routerLinkActive="router-link-active"  class="btn btn-sm btn-primary">Modify</button></div>
-                                        <div class="col-sm-3"><button class="btn btn-sm btn-danger">Eliminate</button></div>
+                                        <div class="col-sm-3"><button [routerLink]="['/modify', student.idCollege]" routerLinkActive="router-link-active"  class="btn btn-sm btn-primary">Modify</button></div>
+                                        <div class="col-sm-3"><button (click)="delete(student)" class="btn btn-sm btn-danger">Eliminate</button></div>
                                     </div>
                                 </td>
                               </tr>

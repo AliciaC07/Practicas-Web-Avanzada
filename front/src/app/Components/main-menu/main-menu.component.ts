@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
+import { ModifyOrCreateStudentService } from '../modify-or-create-student/modify-or-create-student.service';
+import { MainMenuService } from './main-menu.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,18 +13,21 @@ export class MainMenuComponent implements OnInit {
 
  students: Student[] = []
 
-  constructor() { }
+  constructor(private mainMenuService: MainMenuService,private modifyOrCreate: ModifyOrCreateStudentService,private route: Router) { }
 
   ngOnInit(): void {
-    let mystud: Student = new Student();
-    mystud.career="ISC";
-    mystud.id = 1;
-    mystud.idCollege = 2;
-    mystud.lastName = "Diaz Cabrera";
-    mystud.name = "Ruben Osmani";
-    mystud.phone = "809-736-8658";
+    this.mainMenuService.getStudents().subscribe(response=>{
+      this.students = response;
 
-    this.students.push(mystud);
+    })
+  }
+
+  delete(student: Student): void {
+    this.modifyOrCreate.deleteStudent(student.id).subscribe(
+      response =>{
+        window.location.reload();
+      }
+    )
   }
 
 }
