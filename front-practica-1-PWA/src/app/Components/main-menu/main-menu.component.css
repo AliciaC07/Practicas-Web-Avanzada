@@ -1,0 +1,21 @@
+.btn-register {
+    margin: auto;
+    padding: 5% 10% 10% 10%;
+    width: fit-content;
+    height: 20%;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #2E76CF;
+    color: aliceblue;
+    font-size: 150%;
+    display: flex;
+}
+
+.btn-register:hover{
+    background-color: #173b67;
+}
+
+#main-table td,th{
+    text-align: center; 
+    vertical-align: middle;
+}

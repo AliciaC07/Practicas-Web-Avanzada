@@ -1,0 +1,54 @@
+<main>
+    <div class="container">
+        <div class="card my-5">
+            <div class="card-header">
+                <div>
+                    <h2 *ngIf="student.id > 0; else newStudent">Modify Student</h2>
+                </div>
+                <ng-template #newStudent>
+                    <h2>Register Student</h2>
+                </ng-template>
+            </div>
+            <form action="" method="post">
+                <div class="card-body">
+                    
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Name(s)</label>
+                            <input type="text" min="3"  class="form-control" id="name" placeholder="Name(s)" name="name" #name="ngModel" [(ngModel)]="student.name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="surname" class="form-label">Surnames</label>
+                            <input type="text" min="3" class="form-control" id="surname" placeholder="Surnames" name="surname" #surname="ngModel" [(ngModel)]="student.lastName" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="(123) 456-7890" mask='000-000-0000' #Phone #phone="ngModel" [(ngModel)]="student.phone" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="collegeId" class="form-label">Student ID</label>
+                            <input type="text" name="collegeId" id="collegeId" class="form-control" placeholder="10144567" #collegeId="ngModel" mask="00000000" [(ngModel)]="student.idCollege" required [disabled]="student.id > 0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="career" class="form-label">Career</label>
+                            <input type="text" name="career" id="career" class="form-control" placeholder="ISC" #career="ngModel" [(ngModel)]="student.career">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer div-container">
+                    <div class="right">
+                        
+                        <div *ngIf="student.id > 0; else createStudent">
+                            <button type="button" class="btn btn-primary" (click)="modify()" [disabled]="">Update</button>
+                        </div>
+                        <ng-template #createStudent>
+                            <button type="button" class="btn btn-primary" (click)="create()" [disabled]="">Create</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
