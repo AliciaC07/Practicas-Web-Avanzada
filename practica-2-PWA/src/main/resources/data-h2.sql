@@ -72,5 +72,14 @@ insert into http_status_code (id, name, code, type) values ( 62, 'Insufficient S
 insert into http_status_code (id, name, code, type) values ( 63, 'Bandwidth Limit Exceeded', 509, 'Server Errors');
 insert into http_status_code (id, name, code, type) values ( 64, 'Not Extended', 510, 'Server Errors');
 
-
+insert into content_type(id, name) values ( 1, 'application/json');
+insert into content_type(id, name) values ( 2, 'application/x-www-form-urlencoded');
+insert into content_type(id, name) values ( 3, 'application/xhtml+xml');
+insert into content_type(id, name) values ( 4, 'application/xml');
+insert into content_type(id, name) values ( 5, 'multipart/form-data');
+insert into content_type(id, name) values ( 6, 'text/css');
+insert into content_type(id, name) values ( 7, 'text/csv');
+insert into content_type(id, name) values ( 8, 'text/html');
+insert into content_type(id, name) values ( 9, 'text/plain');
+insert into content_type(id, name) values ( 10, 'text/xml');
 
