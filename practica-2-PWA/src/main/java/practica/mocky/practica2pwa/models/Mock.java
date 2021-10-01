@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,7 +19,7 @@ public class Mock {
     @Column(nullable = false)
     private String nameMock;
 
-    @Column
+    @Column(unique = true)
     private String mockId;
 
     @Column(nullable = false)
@@ -43,4 +45,10 @@ public class Mock {
 
     @Column
     private String jwtValidation;
+
+    @OneToMany
+    private List<Headers> headers = new ArrayList<>();
+
+    @ManyToOne
+    private User user;
 }
