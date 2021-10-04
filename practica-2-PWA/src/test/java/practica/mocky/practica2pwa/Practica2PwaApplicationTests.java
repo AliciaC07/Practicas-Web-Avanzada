@@ -14,6 +14,7 @@ import practica.mocky.practica2pwa.models.User;
 import practica.mocky.practica2pwa.repositories.MockRepository;
 import practica.mocky.practica2pwa.services.MockService;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -58,6 +59,9 @@ class Practica2PwaApplicationTests {
         mock.setBodyMessage("pruebas");
         mock.setNameMock("Esto es la prueba con validation");
         mock.setExpiration(60);
+        long expSecs = System.currentTimeMillis() +TimeUnit.SECONDS.toMillis(mock.getExpiration());
+        Date exp = new Date(expSecs);
+        mock.setExpirationDate(exp);
         System.out.println(TimeUnit.SECONDS.toMillis(60));
         String token = jwGen.tokenCreated(mock);
         System.out.println(token);
