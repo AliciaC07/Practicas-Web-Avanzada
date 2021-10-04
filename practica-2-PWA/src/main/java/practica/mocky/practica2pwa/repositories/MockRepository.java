@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface MockRepository extends CrudRepository<Mock, Integer> {
 
-    Optional<Mock> findMockByMockIdAndActiveTrue(String name);
+    Optional<Mock> findMockByMockId(String name);
     Optional<Mock> findMockByIdAndActiveTrue(Integer id);
     Optional<Mock> findMockByJwtValidationAndActiveTrue(String token);
 
