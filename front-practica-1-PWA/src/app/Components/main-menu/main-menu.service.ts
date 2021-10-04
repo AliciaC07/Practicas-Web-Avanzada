@@ -11,6 +11,7 @@ export class MainMenuService {
   private urlEndPoint: string ="http://localhost:8080/students";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
+
   constructor(private http: HttpClient, private router: Router) { }
 
   getStudents(): Observable<Student[]>{
