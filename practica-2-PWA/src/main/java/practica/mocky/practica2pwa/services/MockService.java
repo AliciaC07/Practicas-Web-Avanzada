@@ -33,7 +33,7 @@ public class MockService {
         String mockId = mock.getNameMock()+"-"+id;
         mock.setMockId(mockId);
         mock.setEndpoint(endpoint+"mock/"+mock.getMockId());
-        long expSecs = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(mock.getExpiration());
+        long expSecs = System.currentTimeMillis() +TimeUnit.SECONDS.toMillis(mock.getExpiration());
         Date exp = new Date(expSecs);
         mock.setExpirationDate(exp);
         return mockRepository.save(mock);

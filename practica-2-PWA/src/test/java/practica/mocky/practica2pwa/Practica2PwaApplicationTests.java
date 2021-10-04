@@ -1,6 +1,8 @@
 package practica.mocky.practica2pwa;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,7 @@ import practica.mocky.practica2pwa.repositories.MockRepository;
 import practica.mocky.practica2pwa.services.MockService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -39,13 +42,16 @@ class Practica2PwaApplicationTests {
 //        System.out.println(encode);
         String hola = "";
         Gson gson = new Gson();
-        MultiValueMap<String, String> he = new HttpHeaders();
-        he.add("Primero", "Este");
-        he.add("Segundo", "Este");
-        String p = gson.toJson(he);
-        System.out.println(p);
-        HeadersDTO headersDTO = gson.fromJson(p, HeadersDTO.class);
-        System.out.println(headersDTO);
+        MultiValueMap<String, String> map = new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Esto es", "Un header");
+        headers.add("Otro", "Header");
+        map.add("Esto es", "Un header");
+        map.add("Otro", "Header");
+        String m = gson.toJson(headers);
+        System.out.print(m);
+       MultiValueMap<String, String> p= gson.fromJson(m, HttpHeaders.class);
+        System.out.print(p);
 
 
     }
@@ -89,7 +95,7 @@ class Practica2PwaApplicationTests {
         user.setRole(role);
         mock.setUser(user);
         //mock.setJwtValidationActive(true);
-        mockService.create(mock);
+        //mockService.create(mock);
         System.out.println(mock.getBodyMessage());
 
     }
