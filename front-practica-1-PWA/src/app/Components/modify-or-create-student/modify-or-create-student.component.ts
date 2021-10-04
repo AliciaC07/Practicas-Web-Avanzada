@@ -34,7 +34,7 @@ export class ModifyOrCreateStudentComponent implements OnInit {
       response =>{
         this.route.navigate(['main'])
       },error =>{
-        alert(error);
+        alert(error.error);
       }
     )
   }
@@ -44,7 +44,7 @@ export class ModifyOrCreateStudentComponent implements OnInit {
       response =>{
         this.route.navigate(['main'])
       }, error =>{
-        alert(error);
+        alert(error.error);
       }
     )
   }
