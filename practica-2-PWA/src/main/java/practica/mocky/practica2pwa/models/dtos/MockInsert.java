@@ -62,4 +62,6 @@ public class MockInsert {
 
     private Integer user;
 
+    private Boolean active = true;
+
 }

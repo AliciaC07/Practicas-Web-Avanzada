@@ -75,7 +75,7 @@ public class MockService {
     }
 
     public Mock findMockByMockId(String mockId){
-        return mockRepository.findMockByMockId(mockId)
+        return mockRepository.findMockByMockIdAndActiveTrue(mockId)
                 .orElseThrow(()-> new EntityNotFoundException("Mock request not found"));
     }
 
