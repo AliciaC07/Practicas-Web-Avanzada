@@ -1,6 +1,7 @@
 package practica.mocky.practica2pwa.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpHeaders;
@@ -62,8 +63,8 @@ public class Mock {
     @Column
     private Boolean jwtValidationActive = false;
 
-    @OneToMany
-    private List<Headers> headers = new ArrayList<>();
+    @Column
+    private String headers;
 
 
     @ManyToOne
@@ -74,11 +75,11 @@ public class Mock {
     private Boolean active = true;
 
     public MultiValueMap<String, String> headersList(){
+        Gson gson = new Gson();
         MultiValueMap<String, String> headerList = new HttpHeaders();
-        headerList.add("content-type", this.contentType+"; charset="+this.charset);
-        for (var header : this.headers){
-            headerList.add(header.getKey(), header.getValue());
-        }
+        headerList.add("content-type", this.contentType+";  charset="+this.charset);
+        //MultiValueMap<String, String> p= gson.fromJson(this.headers, HttpHeaders.class);
+        //headerList.addAll(p);
         return headerList;
     }
 
