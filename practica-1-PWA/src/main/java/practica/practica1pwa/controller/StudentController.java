@@ -9,6 +9,7 @@ import practica.practica1pwa.services.StudentService;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class StudentController {
     private final StudentService studentService;
