@@ -36,7 +36,7 @@ public class JwGen {
 
         //if it has been specified, let's add the expiration
         if (ttSecs >= 0) {
-            long expSecs = nowSecs + TimeUnit.SECONDS.toMillis(60);
+            long expSecs = nowSecs + TimeUnit.SECONDS.toMillis(ttSecs);
             Date exp = new Date(expSecs);
             System.out.println(exp.toString());
             builder.setExpiration(exp);
