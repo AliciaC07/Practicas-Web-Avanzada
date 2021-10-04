@@ -9,6 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -49,5 +51,8 @@ public class User {
     @CreationTimestamp
     @JsonIgnore
     private LocalDateTime creationTime;
+
+    @OneToMany(mappedBy = "user")
+    private List<Mock> mocks = new ArrayList<>();
 
 }
