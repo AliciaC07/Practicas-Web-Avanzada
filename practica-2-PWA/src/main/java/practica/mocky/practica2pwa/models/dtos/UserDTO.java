@@ -22,8 +22,6 @@ public class UserDTO {
     @Size(min = 3, max = 50)
     private String lastName;
 
-    @NotBlank(message = "This field can't be null or blank.")
-    @Size(min = 6, max = 50)
     private String password;
 
     @NotBlank(message = "This field can't be null or blank.")
