@@ -6,7 +6,7 @@ import practica.mocky.practica2pwa.models.Role;
 
 import java.util.Optional;
 @Repository
-public interface RoleRepossitory extends CrudRepository<Role, Integer> {
+public interface RoleRepository extends CrudRepository<Role, Integer> {
     Optional<Role> findByNameAndActiveTrue(String name);
 
     Iterable<Role> findAllByActiveTrue();

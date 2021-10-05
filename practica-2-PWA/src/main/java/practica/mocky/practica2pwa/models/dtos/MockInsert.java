@@ -57,9 +57,11 @@ public class MockInsert {
     private Boolean jwtValidationActive = false;
 
 
-    private HttpHeaders headers;
+    private List<HeadersDTO> headers = new ArrayList<>();
 
 
-    private UserDTO user;
+    private Integer user;
+
+    private Boolean active = true;
 
 }

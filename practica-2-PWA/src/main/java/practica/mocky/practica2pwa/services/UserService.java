@@ -4,7 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import practica.mocky.practica2pwa.models.Role;
 import practica.mocky.practica2pwa.models.User;
-import practica.mocky.practica2pwa.repositories.RoleRepossitory;
+import practica.mocky.practica2pwa.repositories.RoleRepository;
 import practica.mocky.practica2pwa.repositories.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -13,12 +13,12 @@ import javax.transaction.Transactional;
 @Service
 public class UserService {
 
-    private final RoleRepossitory roleRepossitory;
+    private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(RoleRepossitory roleRepossitory, UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.roleRepossitory = roleRepossitory;
+    public UserService(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -26,7 +26,7 @@ public class UserService {
 
     @Transactional
     public User save(User user){
-        Role role = roleRepossitory.findByNameAndActiveTrue(user.getRole().getName())
+        Role role = roleRepository.findByNameAndActiveTrue(user.getRole().getName())
                 .orElseThrow(()-> new EntityNotFoundException("This role was not found"));
         user.setRole(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
