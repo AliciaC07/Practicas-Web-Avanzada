@@ -68,6 +68,7 @@ public class Mock {
 
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     @Column
@@ -78,8 +79,8 @@ public class Mock {
         Gson gson = new Gson();
         MultiValueMap<String, String> headerList = new HttpHeaders();
         headerList.add("content-type", this.contentType+";  charset="+this.charset);
-        //MultiValueMap<String, String> p= gson.fromJson(this.headers, HttpHeaders.class);
-        //headerList.addAll(p);
+        MultiValueMap<String, String> p= gson.fromJson(this.headers, HttpHeaders.class);
+        headerList.addAll(p);
         return headerList;
     }
 
