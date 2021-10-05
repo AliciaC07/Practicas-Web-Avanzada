@@ -18,12 +18,8 @@ public class RamEncoder {
 
     public String encode(String string){
         String stringCutted = "";
-        if (stringKey.containsKey(string)){
-            stringCutted = keyString.get(string);
-        }else {
-            stringCutted = setKey(string);
-        }
 
+        stringCutted = setKey(string);
         return stringCutted;
 
     }

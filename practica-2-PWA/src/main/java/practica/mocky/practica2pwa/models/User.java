@@ -53,6 +53,7 @@ public class User {
     private LocalDateTime creationTime;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Mock> mocks = new ArrayList<>();
 
 }

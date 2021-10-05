@@ -4,6 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import practica.mocky.practica2pwa.models.Role;
 import practica.mocky.practica2pwa.models.User;
+import practica.mocky.practica2pwa.models.dtos.UserDTO;
 import practica.mocky.practica2pwa.repositories.RoleRepository;
 import practica.mocky.practica2pwa.repositories.UserRepository;
 
@@ -48,9 +49,13 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUser(User old, User user){
+    public User updateUser(User old, UserDTO user){
         old.setName(user.getName());
         old.setLastName(user.getLastName());
+        Role role = roleRepository.findByNameAndActiveTrue(user.getRole())
+                .orElseThrow(()-> new EntityNotFoundException("This role was not found"));
+        old.setRole(role);
+        old.setPassword(passwordEncoder.encode(user.getPassword()));
         if (userRepository.findUserByEmailAndActiveTrue(user.getEmail()).isEmpty()){
             old.setEmail(user.getEmail());
         }

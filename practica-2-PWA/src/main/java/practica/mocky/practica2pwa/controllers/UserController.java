@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import practica.mocky.practica2pwa.models.User;
+import practica.mocky.practica2pwa.models.dtos.UserDTO;
 import practica.mocky.practica2pwa.services.UserService;
 
 import javax.validation.Valid;
@@ -37,7 +38,7 @@ public class UserController {
     @PutMapping("/user/{id}")
     @PreAuthorize("hasAuthority('Admin')")
     @ResponseStatus(HttpStatus.OK)
-    public User updateUser(@Valid @RequestBody User user, @PathVariable Integer id){
+    public User updateUser(@Valid @RequestBody UserDTO user, @PathVariable Integer id){
         User old = userService.findById(id);
         return userService.updateUser(old, user);
 
