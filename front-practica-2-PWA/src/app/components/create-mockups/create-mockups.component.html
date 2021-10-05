@@ -1,0 +1,105 @@
+<main>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Create Mockup</h4>
+                        <form action="POST">
+                            <!-- Form start -->
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <label for="mockName" class="form-label">Mock identifier</label>
+                                    <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock">
+                                </div>
+                                <div class="col-md-5 form-check" style="margin-top: 30px; margin-left: 30px;">
+                                    <input type="checkbox" class="form-check-input" name="jwtValidation" #jwtValidation="ngModel" [(ngModel)]="mock.jwtValidationActive">
+                                    <label for="jwtValidation" class="form-check-label">JWT Validation</label>
+                                    <span class="describer"><br>If blank no JWT validation will be generated</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea name="description" #description="ngModel" id="description" cols="30" rows="3" class="form-control" placeholder="Simple mock description" [(ngModel)]="mock.description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="method" class="form-label">Method</label>
+                                    <select name="method" #method="ngModel" id="method" class="form-control" [(ngModel)]="mock.method">
+                                        <!--Get, Post, Put, Patch, Delete and Options-->
+                                        <option value="" selected>Select method</option>
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                        <option value="PUT">PUT</option>
+                                        <option value="PATCH">PATCH</option>
+                                        <option value="DELETE">DELETE</option>
+                                        <option value="OPTIONS">OPTIONS</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="charset" class="form-label">Charset</label>
+                                    <select name="charset" #charset="ngModel" id="charset" class="form-control" [(ngModel)]="mock.charset">
+                                        <option value="" selected>Select charset</option>
+                                        <option value="UTF-8">UTF-8</option>
+                                        <option value="UTF-16">UTF-16</option>
+                                        <option value="ISO-8859-1">ISO-8859-1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="status" class="form-label">Http Status</label>
+                                    <select name="status" #status="ngModel" id="status" class="form-control" [(ngModel)]="mock.httpStatus">
+                                        <option value="" selected>Select Http Status</option>
+                                        <option *ngFor="let status of httpStatusCodes" [value]="status.code">{{status.code}} {{status.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="expiration" class="form-label">Expiration Time</label>
+                                    <input type="number" name="expiration" #expiration="ngModel" step="1" min="0" class="form-control" [(ngModel)]="mock.expiration">
+                                    <span class="describer">Expressed in seconds</span>
+                                </div>
+                            </div>
+                            <div class="row mt3">
+                                <div class="col-md-6">
+                                    <label for="contentType" class="form-label">Content-Type</label>
+                                    <select name="contentType" #contentType="ngModel" id="content-type" class="form-control" [(ngModel)]="mock.contentType">
+                                        <option value="" selected>Select a content-type</option>
+                                        <option *ngFor="let contentType of contentTypes" [value]="contentType.name">{{contentType.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="delayResponse" class="form-label">Response delay</label>
+                                    <input type="number" name="delayResponse" #delayResponse="ngModel" id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
+                                    <span class="describer">Expressed in milliseconds</span>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md">
+                                    <label for="headers" class="form-label">Headers</label>
+                                    <textarea name="headers" id="headers" #headers cols="30" rows="3" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"X-Foo-Bar":"Hello World!"&#10;}'></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md">
+                                    <label for="bodyMessage" class="form-label">Body Message</label>
+                                    <textarea name="bodyMessage" id="bodyMessage" #bodyMessage="ngModel" cols="30" rows="11" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"identity": {&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "b06cd03f-75d0-413a-b94b-35e155444d70",&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"login": "John Doe"&#10;&nbsp;&nbsp;&nbsp;&nbsp;},&#10;&nbsp;&nbsp;&nbsp;&nbsp;"permissions": {&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"roles": [&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"moderator"&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&#10;}' [(ngModel)]="mock.bodyMessage"></textarea>
+                                </div>
+                            </div>
+                            <div class="row float-end mt-3">
+                                <div class="col-md-5">
+                                    <button class="btn btn-primary" type="submit" (click)="create()">Create</button>
+                                </div>
+                            </div>
+                            <!-- Form ends -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>

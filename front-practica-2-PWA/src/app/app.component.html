@@ -21,7 +21,7 @@
           User
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><button class="dropdown-item" >APIs</button></li>
+          <li><button class="dropdown-item" [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  >APIs</button></li>
           <li><button class="dropdown-item" (click)="logout()">Logout</button></li>
         </ul>
       </div>

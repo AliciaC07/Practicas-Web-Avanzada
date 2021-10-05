@@ -1,0 +1,22 @@
+.apis-container{
+    margin-top: 5%;
+}
+
+.card-style{
+    -webkit-box-shadow: 0px 0px 14px 1px rgba(120,120,120,1);
+    -moz-box-shadow: 0px 0px 14px 1px rgba(120,120,120,1);
+    box-shadow: 0px 0px 14px 1px rgba(120,120,120,1);
+}
+
+.info-container{
+    border: 2px solid rgb(116, 116, 116);
+    border-radius: 5px;
+    background-color: rgb(201, 201, 201);
+    font-size: medium;
+    font-family: monospace;
+    color: rgb(83, 83, 83);;
+}
+
+.info-container p {
+    margin: 1px;
+}
