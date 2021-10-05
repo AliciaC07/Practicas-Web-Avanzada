@@ -55,7 +55,10 @@ public class UserService {
         Role role = roleRepository.findByNameAndActiveTrue(user.getRole())
                 .orElseThrow(()-> new EntityNotFoundException("This role was not found"));
         old.setRole(role);
-        old.setPassword(passwordEncoder.encode(user.getPassword()));
+        if(user.getPassword() != null){
+            old.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
         if (userRepository.findUserByEmailAndActiveTrue(user.getEmail()).isEmpty()){
             old.setEmail(user.getEmail());
         }
