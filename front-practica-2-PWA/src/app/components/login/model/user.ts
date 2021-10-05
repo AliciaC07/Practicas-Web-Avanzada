@@ -5,8 +5,8 @@ export class User {
        username?: string;
        password?: string;
        name?: string;
-       lastname?: string;
+       lastName?: string;
        email?: string;
-       role?: Role;
+       role!: Role;
 
 }

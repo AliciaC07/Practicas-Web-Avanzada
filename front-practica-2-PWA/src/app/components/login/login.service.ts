@@ -49,7 +49,7 @@ export class LoginService {
     this._user = new User();
     this._user.id = response.id;
     this._user.name = response.name;
-    this._user.lastname = response.lastname;
+    this._user.lastName = response.lastName;
     this._user.email = response.email;
     this._user.role = response.role;
 
@@ -71,5 +71,12 @@ export class LoginService {
     this._token = undefined;
     this._user = undefined;
     sessionStorage.clear();
+  }
+
+  isAdmin(): boolean{
+    if(this.user.role?.name === 'Admin'){
+      return true;
+    }
+    return false;
   }
 }
