@@ -1,0 +1,46 @@
+<main>
+    <div class="container">
+        <div class="row apis-container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card card-style">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="card-title col-md-8 me-4 ms-3">Mock APIs</h4>
+                            <button class="btn btn-primary col-md-3 float-end mb-3" [routerLink]="['/create']" routerLinkActive="router-link-active">Create Mock</button>
+                        </div>
+                        <div class="card">
+                            <!-- ng-for -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mock pymes crear area</h5>
+                                    <div class="col-md info-container">
+                                        <div class="row mt-2 mb-2">
+                                            <div class="ms-4 col-md-5">
+                                                <p>http://localhost:4200/dashboard</p>
+                                                <p>Type: GET</p>
+                                                <p>Charset: UTF-8</p>
+                                            </div>
+                                            <div class="col-md-5 float-end" style="text-align: end;">
+                                                <p>Status: 200</p>
+                                                <p>Content-Type: application/json</p>
+                                                <p>Expiration Date: 03/09/2021</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="float-end mt-3">
+                                        <button class="btn btn-warning btn-sm me-1">Update</button>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end ng for -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>
