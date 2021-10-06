@@ -54,7 +54,7 @@ public class MockInsert {
     private String jwtValidation;
 
 
-    private Boolean jwtValidationActive = false;
+    private Boolean jwtValidationActive;
 
 
     private List<HeadersDTO> headers = new ArrayList<>();

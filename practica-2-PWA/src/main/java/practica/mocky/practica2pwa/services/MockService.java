@@ -62,6 +62,7 @@ public class MockService {
         old.setDelayResponse(mock.getDelayResponse());
         old.setContentType(mock.getContentType());
         old.setHeaders(convert(mock));
+        old.setHttpStatus(mock.getHttpStatus());
         old.setDescription(mock.getDescription());
         long expSecs = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(mock.getExpiration());
         Date exp = new Date(expSecs);
