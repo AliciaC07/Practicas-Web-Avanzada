@@ -38,6 +38,18 @@ export class CreateMockupsService {
     );
   }
 
+  getMock(id: number): Observable<Mock>{
+    return this.http.get<Mock>(`${this.urlEndpoint}/${id}`, {headers: this.appendAuthorization()});
+  }
+
+  updateMock(mock: Mock): Observable<Mock>{
+    return this.http.put<Mock>(`${this.urlEndpoint}/${mock.id}`, mock, {headers: this.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(e);
+      })
+    )
+  }
+
   private appendAuthorization() {
     let token = this.authService.token;
     if(token != null){

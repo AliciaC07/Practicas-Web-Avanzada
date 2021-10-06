@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './model/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class LoginService {
   private _user?: User;
   private _token?: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public get user(): User{
     if(this._user != undefined){
@@ -49,7 +50,7 @@ export class LoginService {
     this._user = new User();
     this._user.id = response.id;
     this._user.name = response.name;
-    this._user.lastname = response.lastname;
+    this._user.lastName = response.lastName;
     this._user.email = response.email;
     this._user.role = response.role;
 
@@ -71,5 +72,15 @@ export class LoginService {
     this._token = undefined;
     this._user = undefined;
     sessionStorage.clear();
+    this.router.navigate(['landing']);
+  }
+
+  isAdmin(): boolean{
+    if(this.isAuthenticated()){
+      if(this.user.role?.name === 'Admin'){
+        return true;
+      }
+    }
+    return false;
   }
 }

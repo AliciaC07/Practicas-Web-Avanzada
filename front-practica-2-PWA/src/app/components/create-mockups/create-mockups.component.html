@@ -3,15 +3,16 @@
         <div class="row mb-4">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="card">
+                <div class="card card-style">
                     <div class="card-body">
-                        <h4 class="card-title">Create Mockup</h4>
+                        <h4 class="card-title" *ngIf="!mock.id; else updateTitle">Create Mockup</h4>
+                        <ng-template #updateTitle><h4 class="card-title">Update Mockup</h4></ng-template>
                         <form action="POST">
                             <!-- Form start -->
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <label for="mockName" class="form-label">Mock identifier</label>
-                                    <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock">
+                                    <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock" [disabled]="mock.id>0">
                                 </div>
                                 <div class="col-md-5 form-check" style="margin-top: 30px; margin-left: 30px;">
                                     <input type="checkbox" class="form-check-input" name="jwtValidation" #jwtValidation="ngModel" [(ngModel)]="mock.jwtValidationActive">
@@ -54,7 +55,7 @@
                                     <label for="status" class="form-label">Http Status</label>
                                     <select name="status" #status="ngModel" id="status" class="form-control" [(ngModel)]="mock.httpStatus">
                                         <option value="" selected>Select Http Status</option>
-                                        <option *ngFor="let status of httpStatusCodes" [value]="status.code">{{status.code}} {{status.name}}</option>
+                                        <option *ngFor="let status of httpStatusCodes" [value]="status.name">{{status.code}} {{status.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -74,13 +75,14 @@
                                 <div class="col-md-6">
                                     <label for="delayResponse" class="form-label">Response delay</label>
                                     <input type="number" name="delayResponse" #delayResponse="ngModel" id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
-                                    <span class="describer">Expressed in milliseconds</span>
+                                    <span class="describer">Expressed in seconds</span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md">
                                     <label for="headers" class="form-label">Headers</label>
-                                    <textarea name="headers" id="headers" #headers cols="30" rows="3" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"X-Foo-Bar":"Hello World!"&#10;}'></textarea>
+                                    <textarea name="headers" id="headers" #headers cols="30" rows="3" (focus)="isJson()" (focusout)="isJson()" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"X-Foo-Bar":"Hello World!"&#10;}'></textarea>
+                                    <span *ngIf="!isHeader()" class="describer">Is not a valid format</span>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -91,7 +93,8 @@
                             </div>
                             <div class="row float-end mt-3">
                                 <div class="col-md-5">
-                                    <button class="btn btn-primary" type="submit" (click)="create()">Create</button>
+                                    <button class="btn btn-primary" type="submit" (click)="create()" *ngIf="!mock.mockId" [disabled]="!isHeader()">Create</button>
+                                    <button class="btn btn-primary" type="submit" (click)="update()" *ngIf="mock.mockId" [disabled]="!isHeader()">Update</button>
                                 </div>
                             </div>
                             <!-- Form ends -->

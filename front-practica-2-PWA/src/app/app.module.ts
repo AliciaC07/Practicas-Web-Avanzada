@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateMockupsComponent } from './components/create-mockups/create-mockups.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CreateMockupsComponent } from './components/create-mockups/create-mocku
     LandingComponent,
     DashboardComponent,
     CreateMockupsComponent,
+    RegisterComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,

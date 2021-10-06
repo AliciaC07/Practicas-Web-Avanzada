@@ -14,7 +14,7 @@ public interface MockRepository extends CrudRepository<Mock, Integer> {
     Optional<Mock> findMockByIdAndActiveTrue(Integer id);
     Optional<Mock> findMockByJwtValidationAndActiveTrue(String token);
 
-    Iterable<Mock> findMocksByUserId(Integer id);
+    Iterable<Mock> findMocksByUserIdAndActiveTrue(Integer id);
     Iterable<Mock> findMocksByUserIdAndExpirationDateBefore(Integer id, Date date);
 
 
