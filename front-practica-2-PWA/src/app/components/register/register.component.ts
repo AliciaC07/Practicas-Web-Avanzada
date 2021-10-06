@@ -46,6 +46,9 @@ export class RegisterComponent implements OnInit {
   }
 
   update(){
+    if(this.user.password === ''){
+      this.user.password = undefined;
+    }
     this.registerService.updateUser(this.user).subscribe(
       response =>{
         this.route.navigate(['list-user']);

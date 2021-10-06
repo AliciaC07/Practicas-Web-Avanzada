@@ -13,7 +13,7 @@ import HttpStatusCode from './models/HttpStatusCode';
   styleUrls: ['./create-mockups.component.css']
 })
 export class CreateMockupsComponent implements OnInit {
-
+  headers = false;
   mock: Mock = new Mock();
   contentTypes: ContentType[] = [];
   httpStatusCodes: HttpStatusCode[] = [];
@@ -30,6 +30,7 @@ export class CreateMockupsComponent implements OnInit {
           this.header.nativeElement.value = JSON.stringify(this.mock.headers, null, '\t').replace(/[\\]/g,'').replace(/\["/g,'"')
             .replace(/"\]/g,'"').replace(/"{/g,'{').replace(/}"/g,'}');
           this.mock.headers = [];
+          this.headers = true;
         })
       }
     })
@@ -72,6 +73,31 @@ export class CreateMockupsComponent implements OnInit {
     this.mockService.updateMock(this.mock).subscribe(response =>{
       this.router.navigate(['dashboard']);
     })
+  }
+  isJson(){
+    let item = this.header.nativeElement.value;
+    item = typeof item !== "string"
+        ? JSON.stringify(item)
+        : item;
+
+    try {
+        item = JSON.parse(item);
+    } catch (e) {
+        this.headers = false;
+    }
+
+    if (typeof item === "object" && item !== null) {
+        this.headers = true;
+    }else{
+      this.headers = false;
+    }
+    if(this.header.nativeElement.value===''){
+      this.headers = true;
+    }
+  }
+
+  isHeader(): boolean {
+    return this.headers;
   }
 
 }

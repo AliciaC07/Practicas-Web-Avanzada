@@ -38,4 +38,10 @@ export class DashboardComponent implements OnInit {
     return false;
   }
 
+  deleteMock(id: number){
+    this.dashboardService.deleteMock(id).subscribe(response =>{
+      window.location.reload();
+    })
+  }
+
 }

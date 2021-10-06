@@ -48,12 +48,12 @@
                                 <div class="mt-3" style="margin-left: 72%;" *ngIf="isExpired(mock.expirationDate); else notExpired">
                                     <span class="expired-message me-1">This mock expired</span>
                                     <button class="btn btn-warning btn-sm me-1"  [disabled]="isExpired(mock.expirationDate)">Update</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteMock(mock.id)">Delete</button>
                                 </div>
                                 <ng-template #notExpired>
                                     <div class="mt-3" style="margin-left: 83%;">
                                         <button class="btn btn-warning btn-sm me-1" [routerLink]="['/update-mock', mock.mockId]" routerLinkActive="router-link-active">Update</button>
-                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                        <button class="btn btn-danger btn-sm" (click)="deleteMock(mock.id)">Delete</button>
                                     </div>
                                 </ng-template>
                                 

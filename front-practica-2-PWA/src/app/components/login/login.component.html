@@ -1,11 +1,11 @@
 <main>
     <div class="container-fluid">
-        <div class="card col-md-3 mx-auto my-5">
-            <div class="card-header">
-                <h3>Login</h3>
-            </div>
+        <div class="card col-md-3 mx-auto my-5 card-style">
             <form method="POST">
                 <div class="card-body">
+                    
+                    <h3 class="card-title">Login</h3>
+                    
                     <div class="">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" name="username" id="username" class="form-control" placeholder="Username" [(ngModel)]="user.username" required>
@@ -14,10 +14,10 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required>
                     </div>
-                    
-                </div>
-                <div class="card-footer div-container">
-                    <button type="button" class="btn btn-primary right" (click)="login()">Login</button>
+
+                    <div class="div-container mt-3">
+                        <button type="submit" class="btn btn-primary right" (click)="login()">Login</button>
+                    </div>
                 </div>
             </form>
         </div>
