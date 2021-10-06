@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../login/model/user';
 import UserDto from './models/userDto';
 import { RegisterService } from './register.service';
@@ -12,12 +12,14 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
 
   user: UserDto = new UserDto();
-  constructor(private registerService: RegisterService, private activatedRoute: ActivatedRoute) { }
+  title: string = "Register User"
+  constructor(private registerService: RegisterService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       if(id){
+        this.title = "Modify User";
         this.registerService.getUser(id).subscribe(
           response =>{
             this.user.name = response.name;
@@ -34,11 +36,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    this.registerService.register(this.user).subscribe();
+    this.registerService.register(this.user).subscribe(
+      response =>{
+        this.route.navigate(['list-user']);
+      }, error =>{
+        alert(error.error);
+      }
+    );
   }
 
   update(){
-    this.registerService.updateUser(this.user).subscribe();
+    this.registerService.updateUser(this.user).subscribe(
+      response =>{
+        this.route.navigate(['list-user']);
+      }, error =>{
+        alert(error.error);
+      }
+    );
   }
 
 }

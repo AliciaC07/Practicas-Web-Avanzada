@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Mock from '../dashboard/models/Mock';
 import { LoginService } from '../login/login.service';
 import { CreateMockupsService } from './create-mockups.service';
@@ -17,9 +18,22 @@ export class CreateMockupsComponent implements OnInit {
   contentTypes: ContentType[] = [];
   httpStatusCodes: HttpStatusCode[] = [];
   @ViewChild('headers', {static: true}) header!: ElementRef;
-  constructor(private mockService: CreateMockupsService, private authService: LoginService) { }
+  constructor(private mockService: CreateMockupsService, private authService: LoginService, private router:Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe(params =>{
+      let id = params['id'];
+      if(id){
+        this.mockService.getMock(id).subscribe(response =>{
+          this.mock = response;
+          this.header.nativeElement.value = JSON.stringify(this.mock.headers, null, '\t').replace(/[\\]/g,'').replace(/\["/g,'"')
+            .replace(/"\]/g,'"').replace(/"{/g,'{').replace(/}"/g,'}');
+          this.mock.headers = [];
+        })
+      }
+    })
+
     this.mockService.getContentTypes().subscribe( response =>{
       this.contentTypes = response;
     })
@@ -41,9 +55,23 @@ export class CreateMockupsComponent implements OnInit {
       }
     })
     this.mockService.create(this.mock).subscribe(response =>{
+      this.router.navigate(['dashboard']);
     });
+  }
 
-    console.log(this.mock);
+  update(){
+    JSON.parse(this.header.nativeElement.value!,(key,value) =>{
+      if(key != ""){
+        let header = new Header();
+        header.key = key;
+        header.value = value;
+
+        this.mock.headers.push(header);
+      }
+    })
+    this.mockService.updateMock(this.mock).subscribe(response =>{
+      this.router.navigate(['dashboard']);
+    })
   }
 
 }

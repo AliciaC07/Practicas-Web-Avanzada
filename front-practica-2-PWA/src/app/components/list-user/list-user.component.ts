@@ -16,7 +16,16 @@ export class ListUserComponent implements OnInit {
     this.registerService.getAllUsers().subscribe(
       response =>{
         this.users = response;
-        console.log(response);
+      }
+    )
+  }
+
+  delete(user: string | undefined){
+    this.registerService.deleteUser(user!).subscribe(
+      response =>{
+        window.location.reload();
+      }, error =>{
+        alert(error.error);
       }
     )
   }

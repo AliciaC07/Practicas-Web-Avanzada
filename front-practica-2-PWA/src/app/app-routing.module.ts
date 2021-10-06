@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'landing', component: LandingComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'create', component: CreateMockupsComponent},
+  {path:'update-mock/:id', component: CreateMockupsComponent},
   {path:'register', component: RegisterComponent},
   {path:'modify-user/:id', component: RegisterComponent},
   {path:'list-user', component:ListUserComponent},

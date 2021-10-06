@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       this.authService.saveUserCreds(response);
       //save token too
       this.router.navigate(['/']);
+      console.log(this.authService.token);
     })
   }
 

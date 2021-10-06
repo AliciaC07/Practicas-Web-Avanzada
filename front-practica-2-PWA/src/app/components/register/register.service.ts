@@ -36,6 +36,14 @@ export class RegisterService {
     )
   }
 
+  deleteUser(user: string): Observable<User> {
+    return this.http.delete<User>(`${this.authService.endPoint}/user/${user}`, {headers: this.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(e);
+      })
+    )
+  }
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userEndPoint,{headers: this.appendAuthorization()});
   }

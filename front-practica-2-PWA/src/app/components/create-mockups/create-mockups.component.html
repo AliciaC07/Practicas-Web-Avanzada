@@ -74,7 +74,7 @@
                                 <div class="col-md-6">
                                     <label for="delayResponse" class="form-label">Response delay</label>
                                     <input type="number" name="delayResponse" #delayResponse="ngModel" id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
-                                    <span class="describer">Expressed in milliseconds</span>
+                                    <span class="describer">Expressed in seconds</span>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -91,7 +91,8 @@
                             </div>
                             <div class="row float-end mt-3">
                                 <div class="col-md-5">
-                                    <button class="btn btn-primary" type="submit" (click)="create()">Create</button>
+                                    <button class="btn btn-primary" type="submit" (click)="create()" *ngIf="!mock.mockId">Create</button>
+                                    <button class="btn btn-primary" type="submit" (click)="update()" *ngIf="mock.mockId">Update</button>
                                 </div>
                             </div>
                             <!-- Form ends -->
