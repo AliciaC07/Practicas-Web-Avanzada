@@ -27,6 +27,12 @@ public class MockController {
         return mockService.create(mock);
     }
 
+    @DeleteMapping("/mocky/delete/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public Mock deleteMock(@PathVariable Integer id){
+        return mockService.deleteMockbyId(id);
+    }
+
     @PutMapping("/mocky/{id}")
     @PreAuthorize("isAuthenticated()")
     public Mock updateMock(@RequestBody MockInsert mock, @PathVariable Integer id){

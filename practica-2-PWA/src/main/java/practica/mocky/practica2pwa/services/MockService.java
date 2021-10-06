@@ -68,12 +68,20 @@ public class MockService {
         Date exp = new Date(expSecs);
         old.setExpirationDate(exp);
         old.setMethod(mock.getMethod());
+        old.setCharset(mock.getCharset());
         old.setJwtValidationActive(mock.getJwtValidationActive());
         if (old.getJwtValidationActive()){
             old.setJwtValidation(jwGen.tokenCreated(old));
         }
         return mockRepository.save(old);
 
+    }
+
+    @Transactional
+    public Mock deleteMockbyId(Integer id){
+        Mock mock = findMockById(id);
+        mock.setActive(false);
+        return mockRepository.save(mock);
     }
 
     public Mock findMockById(Integer id){
@@ -87,7 +95,7 @@ public class MockService {
     }
 
     public Iterable<Mock> findMocksByUserId(Integer id){
-        return mockRepository.findMocksByUserId(id);
+        return mockRepository.findMocksByUserIdAndActiveTrue(id);
     }
 
     public String convert(MockInsert mocky){
