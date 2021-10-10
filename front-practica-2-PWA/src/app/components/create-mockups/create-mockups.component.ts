@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import Mock from '../dashboard/models/Mock';
 import { LoginService } from '../login/login.service';
 import { CreateMockupsService } from './create-mockups.service';
@@ -18,7 +19,8 @@ export class CreateMockupsComponent implements OnInit {
   contentTypes: ContentType[] = [];
   httpStatusCodes: HttpStatusCode[] = [];
   @ViewChild('headers', {static: true}) header!: ElementRef;
-  constructor(private mockService: CreateMockupsService, private authService: LoginService, private router:Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private mockService: CreateMockupsService, private authService: LoginService, private router:Router, 
+    private activatedRoute: ActivatedRoute, private translateService: TranslateService) { }
 
   ngOnInit(): void {
 
@@ -42,6 +44,10 @@ export class CreateMockupsComponent implements OnInit {
     this.mockService.getStatusCodes().subscribe(response => {
       this.httpStatusCodes = response;
     })
+  }
+
+  selectLanguage(event: any){
+    this.translateService.use(event.target.value);
   }
 
   create(){

@@ -5,33 +5,33 @@
             <div class="col-md-8">
                 <div class="card card-style">
                     <div class="card-body">
-                        <h4 class="card-title" *ngIf="!mock.id; else updateTitle">Create Mockup</h4>
-                        <ng-template #updateTitle><h4 class="card-title">Update Mockup</h4></ng-template>
+                        <h4 class="card-title" *ngIf="!mock.id; else updateTitle">{{'page-title' | translate}}</h4>
+                        <ng-template #updateTitle><h4 class="card-title">{{'page-title-update' | translate}}</h4></ng-template>
                         <form action="POST">
                             <!-- Form start -->
                             <div class="row mt-4">
                                 <div class="col-md-6">
-                                    <label for="mockName" class="form-label">Mock identifier</label>
+                                    <label for="mockName" class="form-label">{{'mock-identifier' | translate}}</label>
                                     <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock" [disabled]="mock.id>0">
                                 </div>
                                 <div class="col-md-5 form-check" style="margin-top: 30px; margin-left: 30px;">
                                     <input type="checkbox" class="form-check-input" name="jwtValidation" #jwtValidation="ngModel" [(ngModel)]="mock.jwtValidationActive">
-                                    <label for="jwtValidation" class="form-check-label">JWT Validation</label>
-                                    <span class="describer"><br>If blank no JWT validation will be generated</span>
+                                    <label for="jwtValidation" class="form-check-label">{{'jwt-validation' | translate}}</label>
+                                    <span class="describer"><br>{{'jwt-validation-message' | translate}}</span>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md">
-                                    <label for="description" class="form-label">Description</label>
+                                    <label for="description" class="form-label">{{'description' | translate}}</label>
                                     <textarea name="description" #description="ngModel" id="description" cols="30" rows="3" class="form-control" placeholder="Simple mock description" [(ngModel)]="mock.description"></textarea>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="method" class="form-label">Method</label>
+                                    <label for="method" class="form-label">{{'method' | translate}}</label>
                                     <select name="method" #method="ngModel" id="method" class="form-control" [(ngModel)]="mock.method">
                                         <!--Get, Post, Put, Patch, Delete and Options-->
-                                        <option value="" selected>Select method</option>
+                                        <option value="" selected>{{'select-method' | translate}}</option>
                                         <option value="GET">GET</option>
                                         <option value="POST">POST</option>
                                         <option value="PUT">PUT</option>
@@ -41,9 +41,9 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="charset" class="form-label">Charset</label>
+                                    <label for="charset" class="form-label">{{'charset' | translate}}</label>
                                     <select name="charset" #charset="ngModel" id="charset" class="form-control" [(ngModel)]="mock.charset">
-                                        <option value="" selected>Select charset</option>
+                                        <option value="" selected>{{'select-charset' | translate}}</option>
                                         <option value="UTF-8">UTF-8</option>
                                         <option value="UTF-16">UTF-16</option>
                                         <option value="ISO-8859-1">ISO-8859-1</option>
@@ -52,49 +52,49 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="status" class="form-label">Http Status</label>
+                                    <label for="status" class="form-label">{{'http-status' | translate}}</label>
                                     <select name="status" #status="ngModel" id="status" class="form-control" [(ngModel)]="mock.httpStatus">
-                                        <option value="" selected>Select Http Status</option>
+                                        <option value="" selected>{{'select-http-status' | translate}}</option>
                                         <option *ngFor="let status of httpStatusCodes" [value]="status.name">{{status.code}} {{status.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="expiration" class="form-label">Expiration Time</label>
+                                    <label for="expiration" class="form-label">{{'expiration-time' | translate}}</label>
                                     <input type="number" name="expiration" #expiration="ngModel" step="1" min="0" class="form-control" [(ngModel)]="mock.expiration">
-                                    <span class="describer">Expressed in seconds</span>
+                                    <span class="describer">{{'expiration-time-message' | translate}}</span>
                                 </div>
                             </div>
                             <div class="row mt3">
                                 <div class="col-md-6">
-                                    <label for="contentType" class="form-label">Content-Type</label>
+                                    <label for="contentType" class="form-label">{{'content-type' | translate}}</label>
                                     <select name="contentType" #contentType="ngModel" id="content-type" class="form-control" [(ngModel)]="mock.contentType">
-                                        <option value="" selected>Select a content-type</option>
+                                        <option value="" selected>{{'select-content-type' | translate}}</option>
                                         <option *ngFor="let contentType of contentTypes" [value]="contentType.name">{{contentType.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="delayResponse" class="form-label">Response delay</label>
+                                    <label for="delayResponse" class="form-label">{{'response-delay' | translate}}</label>
                                     <input type="number" name="delayResponse" #delayResponse="ngModel" id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
-                                    <span class="describer">Expressed in seconds</span>
+                                    <span class="describer">{{'response-delay-message' | translate}}</span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md">
-                                    <label for="headers" class="form-label">Headers</label>
+                                    <label for="headers" class="form-label">{{'Headers' | translate}}</label>
                                     <textarea name="headers" id="headers" #headers cols="30" rows="3" (focus)="isJson()" (focusout)="isJson()" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"X-Foo-Bar":"Hello World!"&#10;}'></textarea>
-                                    <span *ngIf="!isHeader()" class="describer">Is not a valid format</span>
+                                    <span *ngIf="!isHeader()" class="describer">{{'headers-message' | translate}}</span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md">
-                                    <label for="bodyMessage" class="form-label">Body Message</label>
+                                    <label for="bodyMessage" class="form-label">{{'body-message' | translate}}</label>
                                     <textarea name="bodyMessage" id="bodyMessage" #bodyMessage="ngModel" cols="30" rows="11" class="form-control" placeholder='{&#10;&nbsp;&nbsp;&nbsp;&nbsp;"identity": {&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "b06cd03f-75d0-413a-b94b-35e155444d70",&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"login": "John Doe"&#10;&nbsp;&nbsp;&nbsp;&nbsp;},&#10;&nbsp;&nbsp;&nbsp;&nbsp;"permissions": {&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"roles": [&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"moderator"&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&#10;}' [(ngModel)]="mock.bodyMessage"></textarea>
                                 </div>
                             </div>
                             <div class="row float-end mt-3">
                                 <div class="col-md-5">
-                                    <button class="btn btn-primary" type="submit" (click)="create()" *ngIf="!mock.mockId" [disabled]="!isHeader()">Create</button>
-                                    <button class="btn btn-primary" type="submit" (click)="update()" *ngIf="mock.mockId" [disabled]="!isHeader()">Update</button>
+                                    <button class="btn btn-primary" type="submit" (click)="create()" *ngIf="!mock.mockId" [disabled]="!isHeader()">{{'create-button' | translate}}</button>
+                                    <button class="btn btn-primary" type="submit" (click)="update()" *ngIf="mock.mockId" [disabled]="!isHeader()">{{'update-button' | translate}}</button>
                                 </div>
                             </div>
                             <!-- Form ends -->
@@ -102,7 +102,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <label for="language" class="form-label">{{'choose-language' | translate}}</label>
+                <select name="language" (change)="selectLanguage($event)" class="form-control">
+                    <option value="en-US">{{'language-en' | translate}}</option>
+                    <option value="fr-FR">{{'language-fr' | translate}}</option>
+                    <option value="es-DO">{{'language-es' | translate}}</option>
+                    <option value="de-DE">{{'language-de' | translate}}</option>
+                </select>
+            </div>
         </div>
     </div>
 </main>
