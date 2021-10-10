@@ -28,7 +28,7 @@ public class MockService {
     private final UserService userService;
     private final JwGen jwGen = new JwGen();
     private final RamEncoder ramEncoder = new RamEncoder();
-    private String endpoint = "https://localhost:8080/";
+    private String endpoint = "http://localhost:8080/";
 
     public MockService(MockRepository mockRepository, HttpStatusCodeService httpStatusCodeService, UserService userService) {
         this.mockRepository = mockRepository;
