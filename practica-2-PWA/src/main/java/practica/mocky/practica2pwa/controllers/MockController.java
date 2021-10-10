@@ -55,6 +55,9 @@ public class MockController {
     @RequestMapping(value = "/mock/{mockId}")
     public ResponseEntity<String> mockConsult(@PathVariable String mockId, HttpServletRequest httpServletRequest){
         Mock mock = mockService.findMockByMockId(mockId);
+        if (!httpServletRequest.getMethod().equalsIgnoreCase(mock.getMethod())){
+            return ResponseEntity.ok("The given method is not valid for thi mock");
+        }
         if (mock.getExpirationDate().getTime() < System.currentTimeMillis()){
             return ResponseEntity.ok("The given endpoint has expired");
         }
