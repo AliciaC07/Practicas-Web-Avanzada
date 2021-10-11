@@ -12,7 +12,7 @@
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <label for="mockName" class="form-label">{{'mock-identifier' | translate}}</label>
-                                    <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock" [disabled]="mock.id>0">
+                                    <input type="text" class="form-control" placeholder="Mock Identifier" name="mockName" #mockName="ngModel" id="mockName" [(ngModel)]="mock.nameMock" [disabled]="mock.id>0" required>
                                 </div>
                                 <div class="col-md-5 form-check" style="margin-top: 30px; margin-left: 30px;">
                                     <input type="checkbox" class="form-check-input" name="jwtValidation" #jwtValidation="ngModel" [(ngModel)]="mock.jwtValidationActive">
@@ -29,7 +29,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="method" class="form-label">{{'method' | translate}}</label>
-                                    <select name="method" #method="ngModel" id="method" class="form-control" [(ngModel)]="mock.method">
+                                    <select name="method" #method="ngModel" id="method" class="form-control" [(ngModel)]="mock.method" required>
                                         <!--Get, Post, Put, Patch, Delete and Options-->
                                         <option value="" selected>{{'select-method' | translate}}</option>
                                         <option value="GET">GET</option>
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="charset" class="form-label">{{'charset' | translate}}</label>
-                                    <select name="charset" #charset="ngModel" id="charset" class="form-control" [(ngModel)]="mock.charset">
+                                    <select name="charset" #charset="ngModel" id="charset" class="form-control" [(ngModel)]="mock.charset" required>
                                         <option value="" selected>{{'select-charset' | translate}}</option>
                                         <option value="UTF-8">UTF-8</option>
                                         <option value="UTF-16">UTF-16</option>
@@ -53,28 +53,28 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="status" class="form-label">{{'http-status' | translate}}</label>
-                                    <select name="status" #status="ngModel" id="status" class="form-control" [(ngModel)]="mock.httpStatus">
+                                    <select name="status" #status="ngModel" id="status" class="form-control" [(ngModel)]="mock.httpStatus" required>
                                         <option value="" selected>{{'select-http-status' | translate}}</option>
                                         <option *ngFor="let status of httpStatusCodes" [value]="status.name">{{status.code}} {{status.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="expiration" class="form-label">{{'expiration-time' | translate}}</label>
-                                    <input type="number" name="expiration" #expiration="ngModel" step="1" min="0" class="form-control" [(ngModel)]="mock.expiration">
+                                    <input type="number" name="expiration" #expiration="ngModel" step="1" min="0" class="form-control" [(ngModel)]="mock.expiration" required>
                                     <span class="describer">{{'expiration-time-message' | translate}}</span>
                                 </div>
                             </div>
                             <div class="row mt3">
                                 <div class="col-md-6">
                                     <label for="contentType" class="form-label">{{'content-type' | translate}}</label>
-                                    <select name="contentType" #contentType="ngModel" id="content-type" class="form-control" [(ngModel)]="mock.contentType">
+                                    <select name="contentType" #contentType="ngModel" id="content-type" class="form-control" [(ngModel)]="mock.contentType" required>
                                         <option value="" selected>{{'select-content-type' | translate}}</option>
                                         <option *ngFor="let contentType of contentTypes" [value]="contentType.name">{{contentType.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="delayResponse" class="form-label">{{'response-delay' | translate}}</label>
-                                    <input type="number" name="delayResponse" #delayResponse="ngModel" id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
+                                    <input type="number" name="delayResponse" #delayResponse="ngModel" required id="delayResponse" step="1" min="1" class="form-control" [(ngModel)]="mock.delayResponse">
                                     <span class="describer">{{'response-delay-message' | translate}}</span>
                                 </div>
                             </div>
