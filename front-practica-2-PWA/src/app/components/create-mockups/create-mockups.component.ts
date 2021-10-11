@@ -24,6 +24,8 @@ export class CreateMockupsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.isJson();
+
     this.activatedRoute.params.subscribe(params =>{
       let id = params['id'];
       if(id){
@@ -97,7 +99,7 @@ export class CreateMockupsComponent implements OnInit {
     }else{
       this.headers = false;
     }
-    if(this.header.nativeElement.value===''){
+    if(this.header.nativeElement.value==='' || this.header.nativeElement.value===null){
       this.headers = true;
     }
   }
