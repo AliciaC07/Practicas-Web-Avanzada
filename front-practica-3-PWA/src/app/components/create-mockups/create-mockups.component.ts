@@ -57,12 +57,13 @@ export class CreateMockupsComponent implements OnInit {
     JSON.parse(this.header.nativeElement.value!,(key,value) =>{
       if(key != ""){
         let header = new Header();
-        header.key = key;
+        header.keyHeader = key;
         header.value = value;
 
         this.mock.headers.push(header);
       }
     })
+    console.log(this.mock);
     this.mockService.create(this.mock).subscribe(response =>{
       this.router.navigate(['dashboard']);
     });
@@ -72,7 +73,7 @@ export class CreateMockupsComponent implements OnInit {
     JSON.parse(this.header.nativeElement.value!,(key,value) =>{
       if(key != ""){
         let header = new Header();
-        header.key = key;
+        header.keyHeader = key;
         header.value = value;
 
         this.mock.headers.push(header);

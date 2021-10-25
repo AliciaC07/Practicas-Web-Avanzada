@@ -1,4 +1,4 @@
 export default class Header {
-    key!: string;
+    keyHeader!: string;
     value!: string;
 }
