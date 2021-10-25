@@ -10,7 +10,7 @@ RUN gradle bootJar --no-daemon
 
 # El comando FROM indica la imagen base.
 # openjdk:8-jdk-alpine es una imagen de Java 8 muy ligera.
-FROM openjdk:11.0.12-jre-slim-buster
+FROM openjdk:11.0.11-slim
 
 # Quien mantiene la versión.
 LABEL maintainer="Alicia Cruz <20170465@ce.pucmm.edu.do>"
