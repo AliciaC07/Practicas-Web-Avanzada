@@ -15,8 +15,8 @@ public class Producer {
     }
 
     public void sendMessage(Integer idDevice, String tail) throws JMSException {
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://servidor:61616");
-        Connection connection = factory.createConnection("alicia", "234");
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        Connection connection = factory.createConnection("alicia", "1234");
         connection.start();
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         Topic topic = session.createTopic(tail);
@@ -26,7 +26,10 @@ public class Producer {
         Faker faker = new Faker();
         Message message = new Message();
         message.setIdDevice(idDevice);
-        message.setTemperature(Float.parseFloat(faker.weather().temperatureFahrenheit()));
+        String temp = faker.weather().temperatureFahrenheit();
+//        System.out.println(faker.weather().temperatureCelsius());
+        temp = temp.replaceAll("[°F]*", "");
+        message.setTemperature(Integer.parseInt(temp));
         message.setHumidity(faker.number().numberBetween(0, 100));
         message.setDateGeneration(LocalDateTime.now());
 

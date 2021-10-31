@@ -1,6 +1,7 @@
 package jms.practica4pwa.config;
 
 import com.google.gson.Gson;
+import jms.practica4pwa.models.Message;
 import jms.practica4pwa.services.MessageService;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -15,7 +16,7 @@ public class Consumer {
     Gson gson = new Gson();
     MessageConsumer messageConsumer;
 
-    private  final MessageService messageService;
+    MessageService messageService;
 
     public Consumer(MessageService messageService) {
         this.messageService = messageService;
@@ -33,6 +34,8 @@ public class Consumer {
             try {
                 TextMessage textMessage = (TextMessage) message;
                 System.out.println("Receive message: \n\n"+ textMessage.getText());
+                Message messageReceive = gson.fromJson(textMessage.getText(), Message.class);
+                messageService.save(messageReceive);
 
             } catch (JMSException e) {
                 e.printStackTrace();

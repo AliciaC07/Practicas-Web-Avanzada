@@ -19,7 +19,7 @@ public class Message {
     private Integer idDevice;
 
     @Column
-    private Float temperature;
+    private Integer temperature;
 
     @Column
     private Integer humidity;

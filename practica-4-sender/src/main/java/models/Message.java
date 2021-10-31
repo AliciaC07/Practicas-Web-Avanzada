@@ -12,7 +12,7 @@ public class Message {
     private Integer idDevice;
 
 
-    private Float temperature;
+    private Integer temperature;
 
 
     private Integer humidity;

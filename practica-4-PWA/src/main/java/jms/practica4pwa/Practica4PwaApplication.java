@@ -12,6 +12,7 @@ import javax.jms.JMSException;
 @SpringBootApplication
 public class Practica4PwaApplication {
 
+    @Autowired
     MessageService messageService;
 
     public static void main(String[] args) {
