@@ -22,7 +22,7 @@ public class Producer {
         Topic topic = session.createTopic(tail);
         MessageProducer messageProducer = session.createProducer(topic);
 
-        ///Contruccion del mensaje de los dispositivos
+        ///Construccion del mensaje de los dispositivos
         Faker faker = new Faker();
         Message message = new Message();
         message.setIdDevice(idDevice);
