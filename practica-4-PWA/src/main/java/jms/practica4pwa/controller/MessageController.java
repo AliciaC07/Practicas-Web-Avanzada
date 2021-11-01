@@ -26,6 +26,7 @@ public class MessageController {
 
     //@SendTo("/topic/data")
     //@Scheduled(fixedRate = 10000)
+    @MessageMapping("/all-data")
     public void findAll(){
         this.template.convertAndSend("/topic/data", messageService.findAll());
     }
