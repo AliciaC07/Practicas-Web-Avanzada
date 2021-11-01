@@ -1,6 +1,7 @@
 package jms.practica4pwa.config;
 
 import com.google.gson.Gson;
+import jms.practica4pwa.controller.MessageController;
 import jms.practica4pwa.models.Message;
 import jms.practica4pwa.services.MessageService;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -15,10 +16,11 @@ public class Consumer {
     Topic topic;
     Gson gson = new Gson();
     MessageConsumer messageConsumer;
-
+    MessageController messageController;
     MessageService messageService;
 
-    public Consumer(MessageService messageService) {
+    public Consumer(MessageService messageService, MessageController messageController) {
+        this.messageController = messageController;
         this.messageService = messageService;
     }
 
@@ -40,6 +42,8 @@ public class Consumer {
             } catch (JMSException e) {
                 e.printStackTrace();
             }
+
+            messageController.findAll();
         });
     }
 
