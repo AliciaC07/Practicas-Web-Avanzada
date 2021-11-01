@@ -1,0 +1,28 @@
+<h2 class="title mt-2 ms-4">Sensor Activity Raw Data</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md mx-auto">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Device Id</th>
+                    <th scope="col">Temperature</th>
+                    <th scope="col">Humidity</th>
+                    <th scope="col">Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let message of messages">
+                    <th scope="row">{{message.id}}</th>
+                    <td>{{message.idDevice}}</td>
+                    <td>{{message.temperature}}</td>
+                    <td>{{message.humidity}}</td>
+                    <td>{{message.dateGeneration}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            
+        </div>
+    </div>
+</div>

@@ -3,5 +3,5 @@ export default class Message{
     idDevice?: number;
     temperature?: number;
     humidity?: number;
-    dateGeneration?: Date;
+    dateGeneration?: string;
 }

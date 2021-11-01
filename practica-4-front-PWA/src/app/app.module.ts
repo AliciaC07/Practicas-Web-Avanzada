@@ -7,13 +7,15 @@ import { GraphsComponent } from './graphs/graphs.component';
 
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RawDataComponent } from './raw-data/raw-data.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GraphsComponent
+    GraphsComponent,
+    RawDataComponent
   ],
   imports: [
     BrowserModule,
