@@ -20,7 +20,7 @@ ENV spring.datasource.password=''
 VOLUME /tmp
 
 # Puertos que estarán disponibles de nuestra aplicación.
-EXPOSE 8080
+EXPOSE 8080 61616
 
 # Copiando el archivo jar generado luego de la ejecución del comando
 # gradle task bootjar, se crean el jar y se copia a la imagen.
