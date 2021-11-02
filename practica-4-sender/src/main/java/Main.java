@@ -1,4 +1,3 @@
-import com.github.javafaker.Faker;
 import config.Producer;
 import org.apache.activemq.broker.BrokerService;
 

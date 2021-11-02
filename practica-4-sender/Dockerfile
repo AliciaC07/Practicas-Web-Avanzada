@@ -10,7 +10,6 @@ LABEL maintainer="Alicia Cruz <20170465@ce.pucmm.edu.do>"
 
 # Indicando variable de ambiente para pasar el nombre
 # de la base de datos.
-ENV NOMBRE_APP = 'jms-app'
 ENV OPTION=1
 ENV ID_DEVICE=0
 
