@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        int numGenerator = 5;
+        int numGenerator = 15;
         int timeDelay = 15;
         if(args.length == 0) {
             System.out.println("You need to pass an option");
@@ -15,6 +15,11 @@ public class Main {
 
         String option = args[0];
         System.out.println("Option: ---> "+ option);
+        try {
+            TimeUnit.SECONDS.sleep(timeDelay);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
 
         if (option.equalsIgnoreCase("1")){
             System.out.println("*******Initializing JMS********");
