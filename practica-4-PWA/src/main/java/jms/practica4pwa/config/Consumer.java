@@ -25,7 +25,7 @@ public class Consumer {
     }
 
     public void connect() throws JMSException {
-        factory = new ActiveMQConnectionFactory("alicia","1234", "failover:tcp://localhost:61616");
+        factory = new ActiveMQConnectionFactory("alicia","1234", "failover:tcp://my-jms-app-server:61616");
         connection = factory.createConnection();
         connection.start();
 

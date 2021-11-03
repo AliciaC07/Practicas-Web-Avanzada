@@ -24,7 +24,7 @@ EXPOSE 8080 61616
 
 # Copiando el archivo jar generado luego de la ejecución del comando
 # gradle task bootjar, se crean el jar y se copia a la imagen.
-COPY --from=build /home/gradle/src/build/libs/*.jar mi_app.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar my_jms_app.jar
 
 #Comando que se ejecuta una vez es iniciada la aplicación.
 ENTRYPOINT ["java", "-jar", "my_jms_app.jar"]

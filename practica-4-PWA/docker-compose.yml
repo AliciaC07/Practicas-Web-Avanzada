@@ -1,0 +1,71 @@
+#indica la version de Docker Compose utilizada
+version: '3.8'
+#Bloque de servicios, indica los contenedores a utilizar.
+services:
+
+  front-jms-app:
+    image: dreamy236/my_jms_front:latest
+    network_mode: host
+    depends_on:
+      - my-jms-app-web
+
+  my-jms-app-web: #nombre del servicio
+    image: aliciac07/my_jms_app:latest #imagen utilizada si viene del registro.
+    ports: #puertos que estaran expuestos.
+      - ${PUERTO_APP}:8080
+    env_file:
+      - .env
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - db
+
+  db:
+    image: buildo/h2database:latest
+    ports:
+      - ${DB_PORT}:8082
+    env_file:
+      - .env
+    volumes:
+      - volume:${DB_VOLUME}
+    networks:
+      - red-app
+
+  my-jms-app-server:
+    image: aliciac07/my_jms_sender:latest
+    ports:
+      - "61616:61616"
+    environment:
+      - OPTION=1
+    networks:
+      - red-app
+    depends_on:
+      - my-jms-app-web
+
+  my-jms-client-1:
+    image: aliciac07/my_jms_sender:latest
+    environment:
+      - OPTION=2
+      - ID_DEVICE=332
+    networks:
+      - red-app
+    depends_on:
+      - my-jms-app-server
+
+  my-jms-client-2:
+    image: aliciac07/my_jms_sender:latest
+    environment:
+      - OPTION=2
+      - ID_DEVICE=455
+    networks:
+      - red-app
+    depends_on:
+      - my-jms-app-server
+networks:  #bloque para las redes
+  red-app:   #indicando la red definida
+
+volumes: #Bloque para definir los volumenes
+  my-volume-compose:
+  volume:

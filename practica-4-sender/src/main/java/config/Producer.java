@@ -15,7 +15,7 @@ public class Producer {
     }
 
     public void sendMessage(Integer idDevice, String tail) throws JMSException {
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://my-jms-app-server:61616");
         Connection connection = factory.createConnection("alicia", "1234");
         connection.start();
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
