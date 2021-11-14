@@ -2,21 +2,7 @@
 version: '3.8'
 #Bloque de servicios, indica los contenedores a utilizar.
 services:
-  mocky-app:       #nombre del servicio
-    image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
-    ports:          #puertos que estaran expuestos.
-      - "8081-8084:8081"
-    env_file:
-      - .env
-    environment:    #variable de ambiente
-      - NOMBRE_APP=$AMBIENTE
-    networks:    #red para conectar los equipos.
-      - red-app
-    volumes:
-      - my-volume-compose:${DB_VOLUME}
-    depends_on:   #indica que primero debe subir los servicios indicados.
-      - db
-  
+
   db:
     image: buildo/h2database:latest
     ports:
@@ -27,7 +13,51 @@ services:
       - volume:${DB_VOLUME}
     networks:
       - red-app
-    
+
+  mocky-app:       #nombre del servicio
+    image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
+    ports:          #puertos que estaran expuestos.
+      - "8081:8081"
+    env_file:
+      - .env
+    environment:    #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+    networks:    #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on:   #indica que primero debe subir los servicios indicados.
+      - db
+
+  mocky-app-2: #nombre del servicio
+    image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
+    ports: #puertos que estaran expuestos.
+      - "8083:8083"
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - db
+
+  mocky-app-3: #nombre del servicio
+    image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
+    ports: #puertos que estaran expuestos.
+      - "8084:8084"
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - db
     
   front-mocky-app:
     image: dreamy236/mocky-app:latest
