@@ -17,7 +17,7 @@ import practica.mocky.practica2pwa.security.jwt.AuthTokenFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final MyUserDetailsService userDetailsService;
     private final AuthEntryPointJwt unauthorizedHandler;
