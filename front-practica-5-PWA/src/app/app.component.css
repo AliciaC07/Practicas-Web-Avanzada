@@ -1,0 +1,13 @@
+.dropdown-link{
+    color: grey;
+}
+.dropdown-link:hover{
+    color:rgb(80, 82, 83);
+}
+.div-container{
+    overflow: hidden;
+}
+
+.right {
+    float: right;
+}

@@ -1,0 +1,60 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card card-style">
+                    <div class="card-body">
+                        <h4 class="card-title">{{title}}</h4>
+                        <form action="" method="">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" minlength="3" maxlength="50" [(ngModel)]="user.name">  
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastname" class="form-label">Last Name</label>
+                                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" minlength="3" maxlength="50" [(ngModel)]="user.lastName">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com" minlength="3" maxlength="80" [(ngModel)]="user.email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select name="role" id="role" class="form-control" [(ngModel)]="user.role">
+                                        <option value="User" selected>User</option>
+                                        <option value="Admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" minlength="3" maxlength="20" [(ngModel)]="user.username" [disabled]="user.id != undefined">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" minlength="6" maxlength="50" [(ngModel)]="user.password">
+                                </div>
+                            </div>
+                            <div class="row float-end mt-4">
+                                <div class="col-md-3">
+                                    <div *ngIf="user.id != undefined; else createUser">
+                                        <button type="submit" class="btn btn-primary" (click)="update()">Modify</button>
+                                    </div>
+                                    <ng-template #createUser>
+                                        <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>
