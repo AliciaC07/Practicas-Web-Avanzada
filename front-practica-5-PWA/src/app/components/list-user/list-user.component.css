@@ -1,0 +1,12 @@
+.table-container{
+    border: 0.01rem solid rgba(182, 182, 182, 0.836);
+    border-radius: 5px;
+    margin-top: 5%;
+    box-shadow: 0px 1px 5px 2px rgb(170, 170, 170);
+    
+}
+
+#main-table td,th{
+    text-align: center; 
+    vertical-align: middle;
+}

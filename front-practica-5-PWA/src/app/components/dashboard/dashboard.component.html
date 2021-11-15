@@ -1,0 +1,70 @@
+<main>
+    <div class="container">
+        <div class="row apis-container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card card-style">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="card-title col-md-8 me-4 ms-3">Mock APIs</h4>
+                            <button class="btn btn-primary col-md-3 float-end mb-1" [routerLink]="['/create']" routerLinkActive="router-link-active">Create Mock</button>
+                        </div>
+                        <!-- ng-for -->
+                        <div *ngFor="let mock of mocks" class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{mock.nameMock}}</h5>
+                                <div class="col-md info-container mt-2 mb-2">
+                                    <div class="row ms-2">
+                                        <div class="col-md-6">
+                                            <p>Status: {{mock.httpStatus}}</p>
+                                        </div>
+                                        <div class="col-md-6 details-right">
+                                            <p>{{mock.endpoint}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row ms-2">
+                                        <div class="col-md-6">
+                                            <p>Type: {{mock.method}}</p>
+                                        </div>
+                                        <div class="col-md-6 details-right">
+                                            <p>Content-Type: {{mock.contentType}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row ms-2">
+                                        <div class="col-md-6">
+                                            <p>Charset: {{mock.charset}}</p>
+                                        </div>
+                                        <div class="col-md-6 details-right">
+                                            <p>Expiration Date: {{getDate(mock.expirationDate)}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row ms-2 me-2" *ngIf="mock.jwtValidationActive">
+                                        <p style="margin: 0px;">Token:</p>
+                                        <p class="col-md describer" style="margin: 0px;">{{mock.jwtValidation}}</p>
+                                    </div>
+                                </div>
+                                <!-- ngif mock.jwtValidation === true-->
+                                
+                                <div class="mt-3" style="margin-left: 72%;" *ngIf="isExpired(mock.expirationDate); else notExpired">
+                                    <span class="expired-message me-1">This mock expired</span>
+                                    <button class="btn btn-warning btn-sm me-1"  [disabled]="isExpired(mock.expirationDate)">Update</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteMock(mock.id)">Delete</button>
+                                </div>
+                                <ng-template #notExpired>
+                                    <div class="mt-3" style="margin-left: 83%;">
+                                        <button class="btn btn-warning btn-sm me-1" [routerLink]="['/update-mock', mock.mockId]" routerLinkActive="router-link-active">Update</button>
+                                        <button class="btn btn-danger btn-sm" (click)="deleteMock(mock.id)">Delete</button>
+                                    </div>
+                                </ng-template>
+                                
+                            </div>
+                        </div>
+                        <!-- end ng for -->
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>
