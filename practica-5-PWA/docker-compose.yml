@@ -4,16 +4,20 @@ version: '3.8'
 services:
 
   db:
-    image: buildo/h2database:latest
+    image: mysql:5.7.26
     ports:
-      - ${DB_PORT}:8082
+      - ${PUERTO_DB}:3306
     env_file:
       - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_USER=$DB_USER
+      - MYSQL_DATABASE=$DB_NAME
     volumes:
-      - volume:${DB_VOLUME}
+      - ~/dato_mysql_compose:/var/lib/mysql
     networks:
       - red-app
-    
+      
   mocky-app:       #nombre del servicio
     image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
