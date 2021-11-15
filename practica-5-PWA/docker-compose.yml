@@ -13,7 +13,7 @@ services:
       - volume:${DB_VOLUME}
     networks:
       - red-app
-
+    
   mocky-app:       #nombre del servicio
     image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
