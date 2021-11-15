@@ -22,9 +22,6 @@ services:
       - .env
     environment:    #variable de ambiente
       - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:h2:mem:db:8082/mocky_data
-      - spring.datasource.username='sa'
-      - spring.datasource.password=''
     networks:    #red para conectar los equipos.
       - red-app
     volumes:
@@ -40,9 +37,6 @@ services:
       - .env
     environment: #variable de ambiente
       - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:h2:tcp://db:8082/mem:mocky_data
-      - spring.datasource.username='sa'
-      - spring.datasource.password=''
     networks: #red para conectar los equipos.
       - red-app
     volumes:
@@ -58,9 +52,6 @@ services:
       - .env
     environment: #variable de ambiente
       - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:h2:tcp://db:8082/mem:mocky_data
-      - spring.datasource.username='sa'
-      - spring.datasource.password=''
     networks: #red para conectar los equipos.
       - red-app
     volumes:
