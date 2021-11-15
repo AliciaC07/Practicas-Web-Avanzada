@@ -17,20 +17,7 @@ services:
       - ~/dato_mysql_compose:/var/lib/mysql
     networks:
       - red-app
-
-  phpmyadmin: # Cliente phpmyadmin para
-    image: phpmyadmin:5.1.1
-    env_file:
-      - .env
-    ports:
-      - ${PUERTO_PHPMYADMIN}:80
-    environment:
-      - PMA_ARBITRARY=1
-    networks:
-      - red-app
-    depends_on: #indica que primero debe subir los servicios indicados.
-      - db
-
+      
   mocky-app:       #nombre del servicio
     image: dreamy236/mocky-app-backend #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
