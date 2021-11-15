@@ -4,13 +4,15 @@ version: '3.8'
 services:
 
   db:
-    image: buildo/h2database:latest
+    image: postgres
     ports:
-      - ${DB_PORT}:8082
+      - "5432:5432"
     env_file:
       - .env
-    volumes:
-      - volume:${DB_VOLUME}
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
     networks:
       - red-app
     
