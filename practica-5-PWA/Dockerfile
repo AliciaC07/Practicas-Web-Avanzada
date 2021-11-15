@@ -21,6 +21,7 @@ ENV NOMBRE_APP = 'mocky-app'
 # forma estandar para cambiar la configuracion
 ENV DB_NAME=mocky_data
 # Puedo pasar las variables directas que serán tomadas por Spring Boot.
+ENV spring.datasource.url='jdbc:h2:mem:localhost:8082/mocky_data'
 ENV spring.datasource.username='sa'
 ENV spring.datasource.password=''
 # ENV spring.datasource.url='jdbc:mysql://192.168.77.10:3306/micro_estudiante'
