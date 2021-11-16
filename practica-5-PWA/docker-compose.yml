@@ -20,7 +20,7 @@ services:
       - red-app
    
   mocky-app:       #nombre del servicio
-    image: aliciac07/mocky-app-backend  #imagen utilizada si viene del registro.
+    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
       - "8081:8080"
     env_file:
@@ -38,7 +38,7 @@ services:
       - db
 
   mocky-app-2: #nombre del servicio
-    image: aliciac07/mocky-app-backend #imagen utilizada si viene del registro.
+    image: aliciac07/mocky-app-backend:finished #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
       - "8083:8080"
     env_file:
@@ -56,7 +56,7 @@ services:
       - db
 
   mocky-app-3: #nombre del servicio
-    image: aliciac07/mocky-app-backend  #imagen utilizada si viene del registro.
+    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
       - "8084:8080"
     env_file:
