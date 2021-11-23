@@ -20,6 +20,10 @@ public class Reservation {
     private String career;
     @DynamoDBAttribute(attributeName = "lab")
     private String lab;
+    @DynamoDBAttribute(attributeName = "email")
+    private String email;
+    @DynamoDBAttribute(attributeName = "uni_id")
+    private String uniId;
     @DynamoDBAttribute(attributeName = "reservation_date")
     private String reservationDate;
 
@@ -40,6 +44,22 @@ public class Reservation {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUniId() {
+        return uniId;
+    }
+
+    public void setUniId(String uniId) {
+        this.uniId = uniId;
     }
 
     public String getCareer() {

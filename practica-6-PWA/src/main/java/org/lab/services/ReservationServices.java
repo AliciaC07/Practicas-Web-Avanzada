@@ -65,11 +65,16 @@ public class ReservationServices {
                 AttributeValue career = mapReservations.get("career");
                 AttributeValue lab = mapReservations.get("lab");
                 AttributeValue reservationDate = mapReservations.get("reservation_date");
+                AttributeValue uniId = mapReservations.get("uni_id");
+                AttributeValue email = mapReservations.get("email");
                 Reservation reservation = new Reservation();
                 reservation.setId(UUID.fromString(id.getS()));
                 reservation.setCareer(career.getS());
                 reservation.setName(name.getS());
                 reservation.setLab(lab.getS());
+                reservation.setReservationDate(reservationDate.getS());
+                reservation.setEmail(email.getS());
+                reservation.setUniId(uniId.getS());
                 reservations.add(reservation);
 
             }
