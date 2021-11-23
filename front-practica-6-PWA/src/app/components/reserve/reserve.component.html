@@ -1,0 +1,42 @@
+<h2>General Info</h2>
+<form action="">
+    <div class="col-md mb-3">
+        <label for="uniId" class="form-label">ID</label>
+        <input class="form-control" type="text" name="uniId" id="uniId" [(ngModel)]="reserve.uniId">
+    </div>
+    <div class="col-md mb-3">
+        <label for="name" class="form-label">Student Name</label>
+        <input class="form-control" type="text" name="name" id="name" [(ngModel)]="reserve.name">
+    </div>
+    <div class="col-md mb-3">
+        <label for="email" class="form-label">Student Email</label>
+        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="reserve.email">
+    </div>
+    <div class="col-md mb-3">
+        <label for="career" class="form-label">Career</label>
+        <input class="form-control" type="text" name="career" id="career" [(ngModel)]="reserve.career">
+    </div>
+    <div class="col-md mb-3">
+        <label for="lab" class="form-label">Laboratory</label>
+        <select class="form-control" id="lab" name="lab" [(ngModel)]="reserve.lab">
+            <option value="Comunications Lab. 1">Comunications Lab. 1</option>
+            <option value="Comunications Lab. 2">Comunications Lab. 2</option>
+            <option value="Computers Lab. 1">Computers Lab. 1</option>
+            <option value="Computers Lab. 2">Computers Lab. 2</option>
+            <option value="Telecomunications Lab. 1">Telecomunications Lab. 1</option>
+            <option value="Telecomunications Lab. 2">Telecomunications Lab. 2</option>
+            <option value="Medicine Lab. 1">Medicine Lab. 1</option>
+            <option value="Medicine Lab. 2">Medicine Lab. 2</option>
+        </select>
+    </div>
+    <div class="col-md mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" [(ngModel)]="date">
+    </div>
+    <div class="col-md mb-3">
+        <label for="time" class="form-label">Start Time (24-hour)</label>
+        <input type="number" class="form-control" id="time" name="time" min="8" max="21" step="1" [(ngModel)]="time">
+    </div>
+    <button class="btn btn-danger" mat-button (click)="closeDialog()">Cancel</button>
+    <button class="btn btn-success float-end" type="submit" (click)="sendInfo()" mat-button>Send</button>
+</form>

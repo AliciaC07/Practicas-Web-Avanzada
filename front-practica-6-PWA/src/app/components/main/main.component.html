@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mt-4">
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-primary" mat-raised-button (click)="openDialog()">Reserve Lab</button>
+        </div>
+        <div class="col-md-8"><h2>Laboratory Reserves Registry</h2></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Laboratory</th>
+              <th scope="col">Date and Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reserve of reservations">
+              <th scope="row">{{reserve.uniId}}</th>
+              <td>{{reserve.name}}</td>
+              <td>{{reserve.lab}}</td>
+              <td>{{reserve.reservationDate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
