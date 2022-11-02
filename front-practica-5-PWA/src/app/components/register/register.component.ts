@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    this.user.id = undefined;
     this.registerService.register(this.user).subscribe(
       response =>{
         this.route.navigate(['list-user']);
